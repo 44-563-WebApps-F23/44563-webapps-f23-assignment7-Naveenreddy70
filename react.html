@@ -1,54 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>FASTEST FINGER APP</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    var reactTime;
-    function recordTime() {
-        reactTime = Date.now();
-        console.log('React Time:', reactTime);
-    }
-    function startTimer() {
-        var tooSlowTimeout = setTimeout(() => {
-            document.getElementById('target').innerText = 'Too Slow';
-        }, 8000);
-        for (let i = 0; i < 9; i++) {
-            setTimeout(() => {
-                document.getElementById('counter').innerText = Count: ${i};
-            }, (8 - i) * 1000);
+    <title>Fastest Finger First</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        var reactTime;
+        function recordTime() {
+            reactTime = Date.now();
+            console.log('React Time:', reactTime);
         }
-        setTimeout(() => {
-            clearTimeout(tooSlowTimeout);
-            if (reactTime === undefined) {
+        function startTimer() {
+            var tooSlowTimeout = setTimeout(() => {
                 document.getElementById('target').innerText = 'Too Slow';
-            } else {
-                let endTime = Date.now();
-                let elapsedTime = endTime - reactTime;
-                document.getElementById('target').innerText = Your time: ${elapsedTime} ms;
+            }, 8000);
+            for (let i = 0; i < 9; i++) {
+                setTimeout(() => {
+                    document.getElementById('counter').innerText = `Count: ${i}`;
+                }, (8 - i) * 1000);
             }
-        }, 8000);
-    }
+            setTimeout(() => {
+                clearTimeout(tooSlowTimeout);
+                if (reactTime === undefined) {
+                    document.getElementById('target').innerText = 'Too Slow';
+                } else {
+                    let endTime = Date.now();
+                    let elapsedTime = endTime - reactTime;
+                    document.getElementById('target').innerText = `Your time: ${elapsedTime} ms`;
+                }
+            }, 8000);
+        }
     </script>
 </head>
 <body>
     <header class="bg-primary text-white text-center p-4">
-
-    <h1>Naveen Venna speed check</h1>
-
+        <h1>Naveen Speed Check</h1>
     </header>
     <main class="container mt-4">
-        <div class="big-text" id="target">Your time: <span id="timerCount">0</span> milliseconds</div>
+        <div class="big-text" id="target">Your time: <span id="timerCount">0</span></div>
         <div id="counter">Count: <span id="counterCount">0</span></div>
         <button class="btn btn-success btn-start-timer" onclick="startTimer()">Start Timer</button>
         <button class="btn btn-danger btn-react" onclick="recordTime()">React</button>
     </main>
-
-  
 </body>
 </html>
